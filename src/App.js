@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const [draw, setDraw] = useState(0)
+  const [turn, setTurn] = useState('O')
+  const boxRef = useRef(null)
+
+  function fill(e) {
+    const isEmptyField = e.target.innerText === ''
+
+    setDraw (() => {
+      if(isEmptyField) {
+        e.target.innerText = turn
+        setTurn(turn === 'O' ? 'X' : 'O')
+      }
+
+    })
+    return draw
+  }
+
+  function handleReset() {
+    let children = boxRef.current.children
+
+    for (const child of children) {
+      child.innerText = ' '
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Tic Tac Toe</h1>
+      <div className='grid-container' ref={boxRef}>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+        <div className='box' onClick={fill}></div>
+      </div>
+      <br/>
+      <div className='button-container'>
+        <button onClick={handleReset}>New Game</button>
+      </div>
+    </>
   );
 }
 
