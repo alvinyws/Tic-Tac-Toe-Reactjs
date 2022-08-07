@@ -20,13 +20,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 40px;
+}
+
+.winner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: Monaco;
+  margin-top: 40px;
 }
 
 button {
   font-size: medium;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgb(6, 243, 97);
+  background-color: rgb(241, 255, 42);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 h1 {
